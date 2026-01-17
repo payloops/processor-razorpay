@@ -1,12 +1,11 @@
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
-import {
-  registerProcessor,
-  type PaymentProcessor,
-  type PaymentInput,
-  type PaymentResult,
-  type PaymentConfig,
-  type RefundResult
+import type {
+  PaymentProcessor,
+  PaymentInput,
+  PaymentResult,
+  PaymentConfig,
+  RefundResult
 } from '@payloops/processor-core';
 
 interface RazorpayOrder {
@@ -250,15 +249,4 @@ class RazorpayProcessor implements PaymentProcessor {
   }
 }
 
-// Create and register the processor
-const razorpayProcessor = new RazorpayProcessor();
-
-export function register() {
-  registerProcessor(razorpayProcessor);
-}
-
-// Auto-register when imported
-register();
-
 export { RazorpayProcessor };
-export default razorpayProcessor;
